@@ -19,15 +19,15 @@ module.exports = {
         domains: []
     },
 
-    // // Для пакета @svgr/webpack
-    // webpack(config) {
-    //     config.module.rules.push({
-    //         test: /\.svg$/i,
-    //         issuer: { and: [/\.(js|ts|md)x?$/] },
-    //         use: ['@svgr/webpack'],
-    //     });
-    //     return config;
-    // },
+    // Для пакета @svgr/webpack
+    webpack(config) {
+        config.module.rules.push({
+            test: /\.svg$/i,
+            issuer: { and: [/\.(js|ts|md)x?$/] },
+            use: ['@svgr/webpack'],
+        });
+        return config;
+    },
 
     // Переменные env, которые необходимо передавать на клиент
     env: {
@@ -57,38 +57,6 @@ module.exports = {
 
     compiler: {
         styledComponents: true
-    },
-
-    // Для предотвращения бага attachShadow в IE11
-    webpack: function (config) {
-
-        config.module.rules.push({
-            test: /\.svg$/i,
-            issuer: /\.[jt]sx?$/,
-            use: [
-                {
-                    loader: '@svgr/webpack',
-                    options: {
-                        svgoConfig: {
-                            plugins: [
-                                {
-                                    name: 'preset-default',
-                                    params: {
-                                        overrides: {
-                                            cleanupIds: false,
-                                            removeViewBox: false,
-                                        },
-                                    },
-                                },
-                                'removeXMLNS',
-                            ],
-                        },
-                    },
-                },
-            ],
-        })
-
-        return config;
     },
 
     async redirects() {
