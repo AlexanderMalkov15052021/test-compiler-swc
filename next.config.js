@@ -62,6 +62,31 @@ module.exports = {
     // Для предотвращения бага attachShadow в IE11
     webpack: function (config) {
 
+        config.module.rules.push({
+            test: /\.svg$/i,
+            issuer: /\.[jt]sx?$/,
+            use: [
+                {
+                    loader: '@svgr/webpack',
+                    options: {
+                        svgoConfig: {
+                            plugins: [
+                                {
+                                    name: 'preset-default',
+                                    params: {
+                                        overrides: {
+                                            cleanupIds: false,
+                                            removeViewBox: false,
+                                        },
+                                    },
+                                },
+                                'removeXMLNS',
+                            ],
+                        },
+                    },
+                },
+            ],
+        })
 
         return config;
     },
