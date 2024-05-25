@@ -1,0 +1,96 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "alwaysStrict": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "lib": [
+            "dom",
+            "es2017"
+        ],
+        "module": "esnext",
+        "moduleResolution": "node",
+        "noEmit": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "esnext",
+        "typeRoots": [
+            "./node_modules/@types",
+            "./src/@types"
+        ],
+        "baseUrl": "",
+        "paths": {
+            "@/data/*": [
+                "data/*"
+            ],
+            "@/lib/*": [
+                "lib/*"
+            ],
+            "@/interfaces": [
+                "interfaces"
+            ],
+            "@/interfaces/*": [
+                "interfaces/*"
+            ],
+            "@/components/*": [
+                "src/components/*"
+            ],
+            "@/context/*": [
+                "src/context/*"
+            ],
+            "@/helpers": [
+                "src/helpers"
+            ],
+            "@/helpers/*": [
+                "src/helpers/*"
+            ],
+            "@/hooks/*": [
+                "src/hooks/*"
+            ],
+            "@/hocs/*": [
+                "src/hocs/*"
+            ],
+            "@/style/*": [
+                "src/style/*"
+            ],
+            "@/recoil": [
+                "src/recoil"
+            ],
+            "@/recoil/*": [
+                "src/recoil/*"
+            ],
+            "@/redux/*": [
+                "src/redux/*"
+            ],
+            "@/icons": [
+                "src/icons"
+            ],
+            "@/icons/*": [
+                "src/icons/*"
+            ],
+            "@/metriks": [
+                "src/metriks"
+            ],
+            "@/metriks/*": [
+                "src/metriks/*"
+            ]
+        },
+        "incremental": true
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "include": [
+        "svgr.d.ts",
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts"
+    ]
+}
