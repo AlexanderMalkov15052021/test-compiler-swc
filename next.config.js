@@ -21,11 +21,43 @@ module.exports = {
 
     // Для пакета @svgr/webpack
     webpack(config) {
+        const originalEntry = config.entry;
+
+        config.entry = async () => {
+            const entries = await originalEntry();
+
+            if (entries['main.js'] && !entries['main.js'].includes('./src/helpers/polyfills.ts')) {
+                entries['main.js'].unshift('./src/helpers/polyfills.ts');
+            }
+            return entries;
+        };
+
         config.module.rules.push({
             test: /\.svg$/i,
-            issuer: { and: [/\.(js|ts|md)x?$/] },
-            use: ['@svgr/webpack'],
-        });
+            issuer: /\.[jt]sx?$/,
+            use: [
+                {
+                    loader: '@svgr/webpack',
+                    options: {
+                        svgoConfig: {
+                            plugins: [
+                                {
+                                    name: 'preset-default',
+                                    params: {
+                                        overrides: {
+                                            cleanupIds: false,
+                                            removeViewBox: false,
+                                        },
+                                    },
+                                },
+                                'removeXMLNS',
+                            ],
+                        },
+                    },
+                },
+            ],
+        })
+
         return config;
     },
 

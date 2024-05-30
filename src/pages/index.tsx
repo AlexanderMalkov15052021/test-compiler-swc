@@ -12,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/img.jpg" />
       </Head>
       <main style={{ backgroundColor: 'blueviolet', padding: '30px' }}>
-        <h1>Test compiler SWC!</h1>
+        <h1>Test compiler SWC! 02</h1>
         <Logo />
       </main>
     </>
